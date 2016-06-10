@@ -1,3 +1,4 @@
+formatter.name: pretty
 suites:
     gibilogic_elements:
         namespace: Gibilogic\Elements
