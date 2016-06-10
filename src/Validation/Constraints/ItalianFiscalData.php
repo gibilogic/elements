@@ -36,5 +36,5 @@ class ItalianFiscalData extends Constraint
     /**
      * @var string $message
      */
-    public $message = 'Questo valore non è un dato fiscale valido.';
+    public $message = 'This value is not a valid italian fiscal data.';
 }

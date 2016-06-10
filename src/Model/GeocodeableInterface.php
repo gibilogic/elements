@@ -13,6 +13,8 @@ namespace Gibilogic\Elements\Model;
 
 /**
  * Interface for classes that can be geocoded.
+ *
+ * @author Matteo Guindani https://github.com/Ingannatore
  */
 interface GeocodeableInterface
 {

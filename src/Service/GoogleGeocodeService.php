@@ -16,6 +16,7 @@ use Gibilogic\Elements\Model\GeocodeableInterface;
 /**
  * Wrapper for the Google's geocode service.
  *
+ * @author Matteo Guindani https://github.com/Ingannatore
  * @see https://developers.google.com/maps/documentation/geocoding/start
  */
 class GoogleGeocodeService

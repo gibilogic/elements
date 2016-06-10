@@ -13,6 +13,8 @@ namespace Gibilogic\Elements\Service;
 
 /**
  * A simple slugger service.
+ *
+ * @author Matteo Guindani https://github.com/Ingannatore
  */
 class SluggerService
 {

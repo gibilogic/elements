@@ -57,7 +57,7 @@ class ItalianFiscalDataValidator extends ConstraintValidator
     ];
 
     /**
-     * Remainder to letter conversion used in the fiscal code validation.
+     * Remainder-to-letter conversion used in the fiscal code validation.
      *
      * @var array $remainderToControlCodeConversion
      */
@@ -74,7 +74,7 @@ class ItalianFiscalDataValidator extends ConstraintValidator
      * @param mixed $value
      * @param Constraint $constraint
      *
-     * @throws UnexpectedTypeException when the given credit card number is no string
+     * @throws UnexpectedTypeException
      */
     public function validate($value, Constraint $constraint)
     {

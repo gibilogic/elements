@@ -16,6 +16,8 @@ use Prophecy\Argument;
 
 /**
  * Spec class for the Slugger service.
+ *
+ * @author Matteo Guindani https://github.com/Ingannatore
  */
 class SluggerServiceSpec extends ObjectBehavior
 {
