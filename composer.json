@@ -1,0 +1,25 @@
+{
+    "name": "gibilogic/elements",
+    "type": "library",
+    "description": "GiBiLogic Elements",
+    "keywords": [],
+    "homepage": "http://www.gibilogic.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name":     "GiBilogic Srl",
+            "homepage": "http://www.gibilogic.com",
+            "email":    "info@gibilogic.com"
+        }
+    ],
+    "require": {
+        "symfony/options-resolver": "~3.0",
+        "symfony/validator": "~3.0"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.0"
+    },
+    "autoload": {
+        "psr-4": { "Gibilogic\\Elements\\": "src/" }
+    }
+}
