@@ -14,7 +14,7 @@ namespace Gibilogic\Elements\Model;
 /**
  * Interface for classes that can be geocoded.
  */
-interface GeocodedInterface
+interface GeocodeableInterface
 {
     /**
      * @return string The address to be used for geocoding

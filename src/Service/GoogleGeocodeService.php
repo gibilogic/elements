@@ -11,7 +11,7 @@
 
 namespace Gibilogic\Element\Geocode\Service;
 
-use Gibilogic\Elements\Model\GeocodedInterface;
+use Gibilogic\Elements\Model\GeocodeableInterface;
 
 /**
  * Wrapper for the Google's geocode service.
@@ -31,14 +31,14 @@ class GoogleGeocodeService
     const SUCCESSFUL_RESPONSE_STATUS = 'OK';
 
     /**
-     * @var string $apiKey A valid Google's API key
+     * @var string $apiKey A valid Google API key
      */
     protected $apiKey;
 
     /**
      * Constructor.
      *
-     * @param string $apiKey A valid Google's API key
+     * @param string $apiKey A valid Google API key (mandatory)
      * @throws \Exception
      */
     public function __construct($apiKey)
@@ -53,18 +53,18 @@ class GoogleGeocodeService
     /**
      * Geocodes the given object.
      *
-     * @param GeocodedInterface $object The object to be geocoded
+     * @param GeocodeableInterface $object The object to be geocoded
      * @return bool `TRUE` on success, `FALSE` otherwise
      * @see \Gibilogic\Element\Geocode\Model\GeocodedInterface
      */
-    public function geocode(GeocodedInterface $object)
+    public function geocode(GeocodeableInterface $object)
     {
-        $coordinates = $this->geocodeAddress($object->getAddressForGeocoding());
-        if (null === $coordinates) {
+        try {
+            list($lat, $lng) = $this->geocodeAddress($object->getAddressForGeocoding());
+        } catch (\Exception $ex) {
             return false;
         }
 
-        list($lat, $lng) = $coordinates;
         $object->setLatitude($lat);
         $object->setLongitude($lng);
 
@@ -91,13 +91,14 @@ class GoogleGeocodeService
      * results, this method will return `NULL`.
      *
      * @param array $response The geocode service response
-     * @return array|null The coordinates or `NULL`
+     * @return array The coordinates (latitude and longitude)
+     * @throws \Exception
      * @see https://developers.google.com/maps/documentation/geocoding/intro#GeocodingResponses
      */
     protected function getCoordinates(array $response)
     {
         if (empty($response['results'])) {
-            return null;
+            throw new \Exception('Unable to get a result from the geocode service');
         }
 
         $location = $response['results'][0]['geometry']['location'];

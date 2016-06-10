@@ -20,6 +20,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class SimpleOptions extends OptionsResolver
 {
     /**
+     * Creates an instance of the SimpleOptions class and resolves the given
+     * options.
+     *
      * @param array $options
      * @return array
      */
@@ -45,6 +48,8 @@ class SimpleOptions extends OptionsResolver
     }
 
     /**
+     * Returns the default values.
+     *
      * @return array
      */
     protected function getDefaults()
@@ -53,6 +58,8 @@ class SimpleOptions extends OptionsResolver
     }
 
     /**
+     * Returns the allowed types.
+     *
      * @return array
      */
     protected function getAllowedTypes()
@@ -61,6 +68,8 @@ class SimpleOptions extends OptionsResolver
     }
 
     /**
+     * Returns the allowed values.
+     *
      * @return array
      */
     protected function getAllowedValues()
