@@ -24,4 +24,4 @@ Here you can find an overview for all the elements of our library.
 
 ### Slugger service 
 
-A simple slugger, used to "sanitize" strings by removing bizarre and URL-unfriendly characters. [Read its documentation](docs/SluggerService.md).
+A simple slugger, used to "sanitize" strings by removing bizarre and URL-unfriendly characters. [Read its documentation](Resources/doc/slugger_service.md).

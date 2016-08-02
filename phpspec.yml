@@ -1,5 +1,0 @@
-formatter.name: pretty
-suites:
-    gibilogic_elements:
-        namespace: Gibilogic\Elements
-        psr4_prefix: Gibilogic\Elements

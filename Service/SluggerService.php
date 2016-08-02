@@ -26,7 +26,7 @@ class SluggerService
     /**
      * Returns the slugified version of the string.
      *
-     * @param string $string The string to be slugified
+     * @param string|null $string The string to be slugified
      * @param string $separator The words separator (optional)
      * @return string The slugified string
      */
@@ -39,7 +39,7 @@ class SluggerService
         return $this->replaceInvalidCharacters(
             $this->toLowercase(
                 $this->replaceExtendedCharacters(
-                    $this->removeNewLines($string)
+                    $this->removeNewLines((string)$string)
                 )
             ),
             $this->sanitizeSeparator($separator)

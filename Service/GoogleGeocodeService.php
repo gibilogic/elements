@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Gibilogic\Element\Geocode\Service;
+namespace Gibilogic\Elements\Service;
 
 use Gibilogic\Elements\Model\GeocodeableInterface;
 
