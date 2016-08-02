@@ -30,7 +30,7 @@ class ItalianFiscalDataValidatorTest extends AbstractConstraintValidatorTest
     protected $validator;
 
     /**
-     * Null and empty strings should not generate a violation
+     * Null and empty strings should not generate a violation.
      */
     public function testEmptyValues()
     {
@@ -41,6 +41,8 @@ class ItalianFiscalDataValidatorTest extends AbstractConstraintValidatorTest
     }
 
     /**
+     * Tests a set of invalid italian fiscal codes.
+     *
      * @param mixed $value
      * @param string $valueAsString
      * @dataProvider getInvalidFiscalCodes
@@ -61,13 +63,38 @@ class ItalianFiscalDataValidatorTest extends AbstractConstraintValidatorTest
     }
 
     /**
+     * Tests a set of invalid italian VAT numbers.
+     *
+     * @param mixed $value
+     * @param string $valueAsString
+     * @dataProvider getInvalidVatNumbers
+     */
+    public function testInvalidVatNumbers($value, $valueAsString)
+    {
+        $constraint = new ItalianFiscalData([
+            'canBeFiscalCode' => false,
+            'canBeVatNumber' => true,
+            'message' => 'myMessage',
+        ]);
+
+        $this->validator->validate($value, $constraint);
+
+        $this->buildViolation('myMessage')
+            ->setParameter('{{ value }}', $valueAsString)
+            ->assertRaised();
+    }
+
+    /**
+     * Generates a set of invalid italian fiscal codes.
+     * Starting valid code: RSSMRC60A02F205A
+     *
      * @return array
      */
     public function getInvalidFiscalCodes()
     {
         return [
             ['random text', '"random text"'], // Random text
-            ['RSSMRC 60A02F205A', '"RSSMRC 60A02F205A"'], // Space inside
+            ['RSSMRC 60A02F205A', '"RSSMRC 60A02F205A"'], // Invalid space
             ['RSSMRC60A02F205', '"RSSMRC60A02F205"'], // Missing control character
             ['RSSMRC60A02F205S', '"RSSMRC60A02F205S"'], // Wrong control character
             ['RSSMRC69A02F205A', '"RSSMRC69A02F205A"'], // Wrong year of birth
@@ -76,6 +103,23 @@ class ItalianFiscalDataValidatorTest extends AbstractConstraintValidatorTest
             ['RSSMRC60A02D205A', '"RSSMRC60A02D205A"'], // Wrong city code
             ['RSSMRC60A02F295A', '"RSSMRC60A02F295A"'], // Wrong city code
             ['01114601006', '"01114601006"'], // Valid VAT number
+        ];
+    }
+
+    /**
+     * Generates a set of invalid italian VAT numbers.
+     * Starting valid number: 01114601006
+     *
+     * @return array
+     */
+    public function getInvalidVatNumbers()
+    {
+        return [
+            ['random text', '"random text"'], // Random text
+            ['0111460100', '"0111460100"'], // Last character is missing
+            ['0111 4601006', '"0111 4601006"'], // Invalid space
+            ['01124601006', '"01124601006"'], // Typo
+            ['RSSMRC60A02F205A', '"RSSMRC60A02F205A"'], // Valid fiscal code
         ];
     }
 
