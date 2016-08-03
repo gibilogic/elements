@@ -28,6 +28,31 @@ class SluggerServiceTest extends \PHPUnit_Framework_TestCase
     private static $slugger = null;
 
     /**
+     * Test for null or empty string
+     */
+    public function testEmptyString()
+    {
+        $this->assertEquals('', $this->getSlugger()->slugify(null));
+        $this->assertEquals('', $this->getSlugger()->slugify(''));
+    }
+
+    /**
+     * Test for the default separator.
+     */
+    public function testDefaultSeparator()
+    {
+        $this->assertEquals('test-separator', $this->getSlugger()->slugify('test separator'));
+    }
+
+    /**
+     * Test for a valid separator (different from the default one).
+     */
+    public function testValidSeparator()
+    {
+        $this->assertEquals('test_separator', $this->getSlugger()->slugify('test separator', '_'));
+    }
+
+    /**
      * Test for invalid (non url-friendly) separator.
      */
     public function testInvalidSeparator()
@@ -81,25 +106,81 @@ class SluggerServiceTest extends \PHPUnit_Framework_TestCase
     public function testInvalidCharacterRemoval()
     {
         $strings = array(
-            'à', 'á', 'â', 'ã', 'å', 'À', 'Á', 'Â', 'Ã', 'Å',
-            'æ', 'Æ', 'ä', 'Ä',
-            '&amp;', '&',
-            'ç', 'Ç', '©',
+            'à',
+            'á',
+            'â',
+            'ã',
+            'å',
+            'À',
+            'Á',
+            'Â',
+            'Ã',
+            'Å',
+            'æ',
+            'Æ',
+            'ä',
+            'Ä',
+            '&amp;',
+            '&',
+            'ç',
+            'Ç',
+            '©',
             '∂',
-            'è', 'é', 'ê', 'ë', 'È', 'É', 'Ê', 'Ë', '€',
-            'ì', 'í', 'î', 'ï', 'Ì', 'Í', 'Î', 'Ï',
-            'ñ', 'Ñ',
-            'ò', 'ó', 'ô', 'õ', 'ø', 'Ò', 'Ó', 'Ô', 'Õ', 'Ø',
-            'œ', 'Œ', 'ö', 'Ö',
+            'è',
+            'é',
+            'ê',
+            'ë',
+            'È',
+            'É',
+            'Ê',
+            'Ë',
+            '€',
+            'ì',
+            'í',
+            'î',
+            'ï',
+            'Ì',
+            'Í',
+            'Î',
+            'Ï',
+            'ñ',
+            'Ñ',
+            'ò',
+            'ó',
+            'ô',
+            'õ',
+            'ø',
+            'Ò',
+            'Ó',
+            'Ô',
+            'Õ',
+            'Ø',
+            'œ',
+            'Œ',
+            'ö',
+            'Ö',
             '®',
             '$',
             'ß',
-            'ù', 'ú', 'û', 'µ', 'Ù', 'Ú', 'Û',
-            'ü', 'Ü',
-            'ÿ', 'Ÿ', '¥',
+            'ù',
+            'ú',
+            'û',
+            'µ',
+            'Ù',
+            'Ú',
+            'Û',
+            'ü',
+            'Ü',
+            'ÿ',
+            'Ÿ',
+            '¥',
             '™',
-            '∏', 'π', 'Π',
-            "'", "`", '"'
+            '∏',
+            'π',
+            'Π',
+            "'",
+            "`",
+            '"'
         );
 
         foreach ($strings as $string) {
