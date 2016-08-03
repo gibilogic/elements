@@ -18,6 +18,7 @@ use Symfony\Component\Validator\Constraint;
  *
  * @Annotation
  * @Target({"PROPERTY", "METHOD", "ANNOTATION"})
+ * @codeCoverageIgnore
  *
  * @author Matteo Guindani https://github.com/Ingannatore
  */

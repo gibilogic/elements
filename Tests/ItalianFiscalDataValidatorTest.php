@@ -11,6 +11,7 @@
 
 namespace Gibilogic\Elements\Tests;
 
+use Symfony\Component\Validator\Constraints\IsNull;
 use Symfony\Component\Validator\Tests\Constraints\AbstractConstraintValidatorTest;
 use Gibilogic\Elements\Validation\Constraints\ItalianFiscalDataValidator;
 use Gibilogic\Elements\Validation\Constraints\ItalianFiscalData;
@@ -30,12 +31,52 @@ class ItalianFiscalDataValidatorTest extends AbstractConstraintValidatorTest
     protected $validator;
 
     /**
+     * Test for an invalid Constraint.
+     *
+     * @expectedException \Symfony\Component\Validator\Exception\UnexpectedTypeException
+     */
+    public function testInvalidConstraint()
+    {
+        $this->validator->validate('', new IsNull());
+    }
+
+    /**
      * Null and empty strings should not generate a violation.
      */
     public function testEmptyValues()
     {
         $this->validator->validate(null, new ItalianFiscalData());
         $this->validator->validate('', new ItalianFiscalData());
+
+        $this->assertNoViolation();
+    }
+
+    /**
+     * Test for a non-string value.
+     *
+     * @expectedException \Symfony\Component\Validator\Exception\UnexpectedTypeException
+     */
+    public function testNotStringValue()
+    {
+        $this->validator->validate(['array'], new ItalianFiscalData());
+    }
+
+    /**
+     * Test for valid fiscal data (both fiscal code and VAT number)
+     */
+    public function testValidFiscalData()
+    {
+        $this->validator->validate('RSSMRC60A02F205A', new ItalianFiscalData([
+            'canBeFiscalCode' => true,
+            'canBeVatNumber' => false,
+            'message' => 'myMessage',
+        ]));
+
+        $this->validator->validate('01114601006', new ItalianFiscalData([
+            'canBeFiscalCode' => false,
+            'canBeVatNumber' => true,
+            'message' => 'myMessage',
+        ]));
 
         $this->assertNoViolation();
     }
