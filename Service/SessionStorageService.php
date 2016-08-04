@@ -62,12 +62,14 @@ class SessionStorageService
      */
     public function set($key, array $values, $overwrite = false)
     {
+        $key = (string)$key;
+
         if (!$overwrite) {
             $previousValues = $this->get($key);
             $values = array_replace($previousValues, array_filter($values));
         }
 
-        $this->session->set((string)$key, $values);
+        $this->session->set($key, $values);
         return $this;
     }
 
