@@ -22,6 +22,10 @@ php composer.phar require gibilogic/elements
 
 Here you can find an overview for all the elements of our library. 
 
+### Session storage service
+
+A simple key-based session storage service for arrays made of key-value pairs. [Read its documentation](Resources/doc/session_storage_service.md).
+
 ### Slugger service 
 
 A simple slugger, used to "sanitize" strings by removing bizarre and URL-unfriendly characters. [Read its documentation](Resources/doc/slugger_service.md).
