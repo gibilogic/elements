@@ -22,6 +22,14 @@ use Symfony\Component\HttpFoundation\Request;
 trait ParametersExtractorTrait
 {
     /**
+     * Executes the extraction from the given Request instance.
+     *
+     * The source can be `null` or one of the following:
+     *
+     * - "query": to extract from the GET parameters
+     * - "request": to extract from the POST parameters
+     * - "content": to extract from a JSON payload
+     *
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @param string|null $prefix
      * @param string|null $source
@@ -30,13 +38,13 @@ trait ParametersExtractorTrait
     protected function extractParameters(Request $request, $prefix = null, $source = null)
     {
         switch ($source) {
-            case 'get':
+            case 'query':
                 $parameters = $request->query->all();
                 break;
-            case 'post':
+            case 'request':
                 $parameters = $request->request->all();
                 break;
-            case 'body':
+            case 'content':
                 $parameters = (array)json_decode($request->getContent(), true);
                 break;
             default:
