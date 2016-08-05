@@ -17,6 +17,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * A wrapper for the OptionsResolver class to ease the creation and management
  * of options and/or parameters lists.
  *
+ * @codeCoverageIgnore
+ *
  * @author Matteo Guindani https://github.com/Ingannatore
  * @see \Symfony\Component\OptionsResolver\OptionsResolver
  */

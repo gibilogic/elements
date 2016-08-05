@@ -16,6 +16,8 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 /**
  * Common methods for adding flash messages to the user's session.
  *
+ * @codeCoverageIgnore
+ *
  * @author Matteo Guindani https://github.com/Ingannatore
  * @see http://symfony.com/doc/current/book/controller.html#flash-messages
  */
