@@ -22,6 +22,10 @@ php composer.phar require gibilogic/elements
 
 Here you can find an overview for all the elements of our library. 
 
+### Flashable trait
+
+Some useful methods to add user flash messages, packed into an handy [PHP Trait](http://php.net/manual/en/language.oop5.traits.php). [Read its documentation](Resources/doc/flashable_trait.md).
+
 ### Session storage service
 
 A simple key-based session storage service for arrays made of key-value pairs. [Read its documentation](Resources/doc/session_storage_service.md).
