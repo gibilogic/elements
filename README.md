@@ -33,3 +33,15 @@ A simple key-based session storage service for arrays made of key-value pairs. [
 ### Slugger service 
 
 A simple slugger, used to "sanitize" strings by removing bizarre and URL-unfriendly characters. [Read its documentation](Resources/doc/slugger_service.md).
+
+## Contributions
+
+You can contribute to the growth of this library in a lot of different ways:
+
+* Create an issue about a bug or a feature you would like to see implemented
+* Open pull requests about fixes, new features, tests, documentation, etc.
+* Use the library and let us know ;)
+
+## License
+
+See the attached [LICENSE](LICENSE) file.
