@@ -18,21 +18,9 @@ Or, if you are using the `composer.phar` version, use the console command:
 php composer.phar require gibilogic/elements
 ```
 
-## Elements
+## Usage
 
-Here you can find an overview for all the elements of our library. 
-
-### Flashable trait
-
-Some useful methods to add user flash messages, packed into an handy [PHP Trait](http://php.net/manual/en/language.oop5.traits.php). [Read its documentation](Resources/doc/flashable_trait.md).
-
-### Session storage service
-
-A simple key-based session storage service for arrays made of key-value pairs. [Read its documentation](Resources/doc/session_storage_service.md).
-
-### Slugger service 
-
-A simple slugger, used to "sanitize" strings by removing bizarre and URL-unfriendly characters. [Read its documentation](Resources/doc/slugger_service.md).
+Click [here](Resources/doc/index.md) to read the full bundle's documentation.
 
 ## Contributions
 
@@ -44,4 +32,4 @@ You can contribute to the growth of this library in a lot of different ways:
 
 ## License
 
-See the attached [LICENSE](LICENSE) file.
+See the attached [license](LICENSE) file.
